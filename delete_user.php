@@ -28,8 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
             $stmt->execute();
 
             if ($stmt->rowCount() > 0) {
-                http_response_code(200);
-                echo json_encode(["message" => "Usuario {$_GET['id']} eliminado correctamente"]);
+                http_response_code(204);
             } else {
                 http_response_code(404);
                 echo json_encode(["error" => "Usuario no encontrado"]);

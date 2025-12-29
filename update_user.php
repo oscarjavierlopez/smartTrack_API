@@ -45,12 +45,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'PUT') { //Hace un update de todo menos del id
             $stmt->bindParam(':perfil', $data['perfil'], PDO::PARAM_STR);
             $stmt->bindParam(':ruta_cv', $data['ruta_cv'], PDO::PARAM_STR);
 
-           
+
             $stmt->execute();
 
             if ($stmt->rowCount() > 0) {
                 http_response_code(200);
-                echo json_encode(["message" => "Usuario {$_GET['id']} actualizado correctamente"]);
+                echo json_encode([
+                    "id" => $_GET['id'],
+                    "dni" => $data['dni'],
+                    "nombre" => $data['nombre'],
+                    "apellidos" => $data['apellidos'],
+                    "email" => $data['email'],
+                    "telefono" => $data['telefono'],
+                    "contrasena" => $data['contrasena'],
+                    "activo" => $data['activo'],
+                    "direccion" => $data['direccion'],
+                    "ciudad" => $data['ciudad'],
+                    "provincia" => $data['provincia'],
+                    "codigo_postal" => $data['codigo_postal'],
+                    "fecha_nacimiento" => $data['fecha_nacimiento'],
+                    "perfil" => $data['perfil'],
+                    "ruta_cv" => $data['ruta_cv']
+                ]);
             } else {
                 http_response_code(404);
                 echo json_encode(["error" => "Usuario no encontrado"]);

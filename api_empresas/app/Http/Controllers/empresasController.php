@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Validator;
 
 class empresasController extends Controller
 {
+    public  function get_empresas()
+    {
+        $empresas = Empresa::all();
+        return response()->json($empresas, 200);
+    }
+
     public function update_by_id(Request $request, $id)
     {
         $empresa = Empresa::find($id);
@@ -126,7 +132,7 @@ class empresasController extends Controller
             return response()->json(["Error" => $validator->errors()], 400);
         }
 
-        if($request->has('nombre')){
+        if ($request->has('nombre')) {
             $empresa->nombre = $request->nombre;
         }
 

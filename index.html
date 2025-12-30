@@ -1,12 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prueba Api empresas</title>
     <script type="module" src="main.js"></script>
+    <link rel="stylesheet" href="estilos.css">
 </head>
+
 <body>
-    
+    <form action="#" method="post">
+
+        <label for="id">Id</label>
+        <input type="text" id="id" name="id">
+
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre">
+
+        <label for="cif">CIF</label>
+        <input type="text" id="cif" name="cif">
+
+        <label for="direccion">Dirección</label>
+        <input type="text" id="direccion" name="direccion">
+
+        <label for="ciudad">Ciudad</label>
+        <input type="text" id="ciudad" name="ciudad">
+
+        <label for="provincia">Provincia</label>
+        <input type="text" id="provincia" name="provincia">
+
+        <label for="pais">País</label>
+        <input type="text" id="pais" name="pais">
+
+        <label for="latitud">Latitud</label>
+        <input type="number" id="latitud" name="latitud" step="0.0000001" min="-90" max="90">
+
+        <label for="longitud">Longitud</label>
+        <input type="number" id="longitud" name="longitud" step="0.0000001" min="-180" max="180">
+
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" name="descripcion" rows="4"></textarea>
+
+        <label for="sector">Sector</label>
+        <input type="text" id="sector" name="sector">
+
+        <label for="prioridad">Prioridad (0 a 10)</label>
+        <input type="number" id="prioridad" name="prioridad" min="0" max="10" value="0">
+
+        <label for="presencialidad">Presencialidad</label>
+        <select id="presencialidad" name="presencialidad">
+            <option value="presencial">Presencial</option>
+            <option value="híbrido">Híbrido</option>
+            <option value="remoto">Remoto</option>
+        </select>
+
+        <label for="horario">Horario</label>
+        <input type="text" id="horario" name="horario">
+
+        <div class="activa">
+            <label for="activa">Empresa activa
+                <input type="checkbox" id="activa" name="activa" value="1">
+            </label>
+        </div>
+
+        <br>
+        <button type="button" id="actualizarPorId">Actualizar por id</button>
+        <button type="button" id="actualizarPorCif">Actualizar por cif</button>
+        <button type="button" id="eliminarPorId">Eliminar por id</button>
+        <button type="button" id="eliminarPorCif">Eliminar por cif</button>
+
+    </form>
+
+    <div id="cards" class="cards-container"></div>
 </body>
+
 </html>

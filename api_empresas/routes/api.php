@@ -4,6 +4,8 @@ use App\Http\Controllers\empresasController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/empresas', [empresasController::class, 'get_empresas']);
+
 Route::patch('/empresas/{id}', [empresasController::class, 'update_by_id']);
 
 Route::patch('/empresas/cif/{cif}', [empresasController::class, 'update_by_cif']);

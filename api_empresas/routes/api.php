@@ -6,9 +6,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::patch('/empresas/{id}', [empresasController::class, 'update_by_id']);
 
-Route::patch('/empresas', [empresasController::class, 'update_by_name']);
+Route::patch('/empresas/cif/{cif}', [empresasController::class, 'update_by_cif']);
 
 Route::delete('/empresas/{id}',  [empresasController::class, 'delete_by_id']);
 
-Route::delete('/empresas',  [empresasController::class, 'delete_by_name']);
+Route::delete('/empresas/cif/{cif}',  [empresasController::class, 'delete_by_cif']);
 

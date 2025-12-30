@@ -18,24 +18,24 @@ class empresasController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            'nombre' => 'max:255',
-            'cif' => 'max:50',
-            'direccion' => 'max:255',
-            'ciudad' => 'max:100',
-            'provincia' => 'max:100',
-            'pais' => 'max:80',
+            'nombre' => 'string|max:255',
+            'cif' => 'string|max:50',
+            'direccion' => 'string|max:255',
+            'ciudad' => 'string|max:100',
+            'provincia' => 'string|max:100',
+            'pais' => 'string|max:80',
             'latitud' => 'numeric',
             'longitud' => 'numeric',
             'descripcion' => 'string',
-            'sector' => 'max:120',
+            'sector' => 'string|max:120',
             'prioridad' => 'numeric',
             'presencialidad' => 'in:presencial,híbrido,remoto',
-            'horario' => 'max:100',
+            'horario' => 'string|max:100',
             'activa' => 'numeric',
         ]);
 
         if ($validator->fails()) {
-            return response()->json(["Error" => "Error en la validación de datos"], 400);
+            return response()->json(["Error" => $validator->errors()], 400);
         }
 
         if ($request->has('nombre')) {
@@ -97,33 +97,37 @@ class empresasController extends Controller
         return response()->json($empresa, 200);
     }
 
-    public function update_by_name(Request $request)
+    public function update_by_cif(Request $request, $cif)
     {
+        $empresa = Empresa::where('cif', $cif)->first();
+
+        if (!$empresa) {
+            return response()->json(["Error" => "Empresa no encontrada"], 404);
+        }
+
         $validator = Validator::make($request->all(), [
-            'nombre' => 'Required|max:255',
-            'cif' => 'max:50',
-            'direccion' => 'max:255',
-            'ciudad' => 'max:100',
-            'provincia' => 'max:100',
-            'pais' => 'max:80',
+            'nombre' => 'string|max:255',
+            'cif' => 'string|max:50',
+            'direccion' => 'string|max:255',
+            'ciudad' => 'string|max:100',
+            'provincia' => 'string|max:100',
+            'pais' => 'string|max:80',
             'latitud' => 'numeric',
             'longitud' => 'numeric',
             'descripcion' => 'string',
-            'sector' => 'max:120',
+            'sector' => 'string|max:120',
             'prioridad' => 'numeric',
             'presencialidad' => 'in:presencial,híbrido,remoto',
-            'horario' => 'max:100',
+            'horario' => 'string|max:100',
             'activa' => 'numeric',
         ]);
 
         if ($validator->fails()) {
-            return response()->json(["Error" => "Error en la validación de datos"], 400);
+            return response()->json(["Error" => $validator->errors()], 400);
         }
 
-        $empresa = Empresa::where('nombre', $request->nombre)->first();
-
-        if (!$empresa) {
-            return response()->json(["Error" => "Empresa no encontrada"], 404);
+        if($request->has('nombre')){
+            $empresa->nombre = $request->nombre;
         }
 
         if ($request->has('cif')) {
@@ -193,17 +197,9 @@ class empresasController extends Controller
         return response()->noContent();
     }
 
-    public function delete_by_name(Request $request)
+    public function delete_by_cif($cif)
     {
-        $validator = Validator::make($request->all(), [
-            'nombre' => 'Required|max:255'
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(["Error" => "Error en la validación de datos"], 400);
-        }
-
-        $empresa = Empresa::where('nombre', $request->nombre)->first();
+        $empresa = Empresa::where('cif', $cif)->first();
 
         if (!$empresa) {
             return response()->json(["Error" => "Empresa no encontrada"], 404);

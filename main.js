@@ -27,59 +27,157 @@ function delete_by_cif() {
 function update_by_id() {
     let id = document.getElementById('id').value;
 
+    let body = {};
+
+    if (!/^\s*$/.test(document.getElementById('nombre').value)) {
+        body = { ...body, nombre: document.getElementById('nombre').value };
+    }
+
+    if (!/^\s*$/.test(document.getElementById('cif').value)) {
+        body = { ...body, cif: document.getElementById('cif').value };
+    }
+
+    if (!/^\s*$/.test(document.getElementById('direccion').value)) {
+        body = { ...body, direccion: document.getElementById('direccion').value };
+    }
+
+    if (!/^\s*$/.test(document.getElementById('ciudad').value)) {
+        body = { ...body, ciudad: document.getElementById('ciudad').value };
+    }
+
+    if (!/^\s*$/.test(document.getElementById('provincia').value)) {
+        body = { ...body, provincia: document.getElementById('provincia').value };
+    }
+
+    if (!/^\s*$/.test(document.getElementById('pais').value)) {
+        body = { ...body, pais: document.getElementById('pais').value };
+    }
+
+    if (!/^\s*$/.test(document.getElementById('latitud').value)) {
+        body = { ...body, latitud: document.getElementById('latitud').value };
+    }
+
+    if (!/^\s*$/.test(document.getElementById('longitud').value)) {
+        body = { ...body, longitud: document.getElementById('longitud').value };
+    }
+
+    if (!/^\s*$/.test(document.getElementById('descripcion').value)) {
+        body = { ...body, descripcion: document.getElementById('descripcion').value };
+    }
+
+    if (!/^\s*$/.test(document.getElementById('sector').value)) {
+        body = { ...body, sector: document.getElementById('sector').value };
+    }
+
+    if (!/^\s*$/.test(document.getElementById('prioridad').value)) {
+        body = { ...body, prioridad: document.getElementById('prioridad').value };
+    }
+
+    if (document.getElementById('presencialidad').value !== "seleccionar") {
+        body = { ...body, presencialidad: document.getElementById('presencialidad').value };
+    }
+
+    if (!/^\s*$/.test(document.getElementById('horario').value)) {
+        body = { ...body, horario: document.getElementById('horario').value };
+    }
+
+    if (document.getElementById('activa').checked === true) {
+        body = { ...body, activa: 1 };
+    } else {
+        body = { ...body, activa: 0 };
+    }
+
     fetch(`http://localhost:8000/api/empresas/${id}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-            "nombre": "Sarabris seguros S.A.",
-            "direccion": "Calle Nueva 123",
-            "ciudad": "Madrid",
-            "provincia": "Madrid",
-            "pais": "España",
-            "latitud": 40.4167753,
-            "longitud": -3.7037902,
-            "descripcion": "Empresa dedicada a soluciones tecnológicas.",
-            "sector": "Tecnología",
-            "prioridad": 7,
-            "presencialidad": "híbrido",
-            "horario": "Lunes a Viernes 09:00-18:00",
-            "activa": 1
-        })
+        body: JSON.stringify(body)
     })
         .then(response => response.json())
-        .then(data => console.log(data)
-        )
+        .then(data => {
+            console.log(data);
+            get_empresas();
+        })
         .catch(err => console.log(err));
 }
 
 function update_by_cif() {
     let cif = document.getElementById('cif').value;
 
+    let body = {};
+
+    if (!/^\s*$/.test(document.getElementById('nombre').value)) {
+        body = { ...body, nombre: document.getElementById('nombre').value };
+    }
+
+    if (!/^\s*$/.test(document.getElementById('cif').value)) {
+        body = { ...body, cif: document.getElementById('cif').value };
+    }
+
+    if (!/^\s*$/.test(document.getElementById('direccion').value)) {
+        body = { ...body, direccion: document.getElementById('direccion').value };
+    }
+
+    if (!/^\s*$/.test(document.getElementById('ciudad').value)) {
+        body = { ...body, ciudad: document.getElementById('ciudad').value };
+    }
+
+    if (!/^\s*$/.test(document.getElementById('provincia').value)) {
+        body = { ...body, provincia: document.getElementById('provincia').value };
+    }
+
+    if (!/^\s*$/.test(document.getElementById('pais').value)) {
+        body = { ...body, pais: document.getElementById('pais').value };
+    }
+
+    if (!/^\s*$/.test(document.getElementById('latitud').value)) {
+        body = { ...body, latitud: document.getElementById('latitud').value };
+    }
+
+    if (!/^\s*$/.test(document.getElementById('longitud').value)) {
+        body = { ...body, longitud: document.getElementById('longitud').value };
+    }
+
+    if (!/^\s*$/.test(document.getElementById('descripcion').value)) {
+        body = { ...body, descripcion: document.getElementById('descripcion').value };
+    }
+
+    if (!/^\s*$/.test(document.getElementById('sector').value)) {
+        body = { ...body, sector: document.getElementById('sector').value };
+    }
+
+    if (!/^\s*$/.test(document.getElementById('prioridad').value)) {
+        body = { ...body, prioridad: document.getElementById('prioridad').value };
+    }
+
+    if (document.getElementById('presencialidad').value !== "seleccionar") {
+        body = { ...body, presencialidad: document.getElementById('presencialidad').value };
+    }
+
+    if (!/^\s*$/.test(document.getElementById('horario').value)) {
+        body = { ...body, horario: document.getElementById('horario').value };
+    }
+
+    if (document.getElementById('activa').checked === true) {
+        body = { ...body, activa: 1 };
+    } else {
+        body = { ...body, activa: 0 };
+    }
+
+
     fetch(`http://localhost:8000/api/empresas/cif/${cif}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-            "nombre": "empresa actualizada S.A.",
-            "direccion": "Calle Nueva 123",
-            "ciudad": "Madrid",
-            "provincia": "Madrid",
-            "pais": "España",
-            "latitud": 40.4167753,
-            "longitud": -3.7037902,
-            "descripcion": "Empresa dedicada a soluciones tecnológicas.",
-            "sector": "Tecnología",
-            "prioridad": 7,
-            "presencialidad": "híbrido",
-            "horario": "Lunes a Viernes 09:00-18:00",
-            "activa": 1
-        })
+        body: JSON.stringify(body)
     })
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => {
+            console.log(data);
+            get_empresas();
+        })
         .catch(err => console.log(err));
 }
 
@@ -117,6 +215,7 @@ document.getElementById('actualizarPorId').addEventListener('click', update_by_i
 document.getElementById('actualizarPorCif').addEventListener('click', update_by_cif);
 document.getElementById('eliminarPorId').addEventListener('click', delete_by_id);
 document.getElementById('eliminarPorCif').addEventListener('click', delete_by_cif);
+
 
 
 

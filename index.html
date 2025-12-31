@@ -46,10 +46,11 @@
         <input type="text" id="sector" name="sector">
 
         <label for="prioridad">Prioridad (0 a 10)</label>
-        <input type="number" id="prioridad" name="prioridad" min="0" max="10" value="0">
+        <input type="number" id="prioridad" name="prioridad" min="0" max="10">
 
         <label for="presencialidad">Presencialidad</label>
         <select id="presencialidad" name="presencialidad">
+            <option value="seleccionar">Seleccione una opción</option>
             <option value="presencial">Presencial</option>
             <option value="híbrido">Híbrido</option>
             <option value="remoto">Remoto</option>
@@ -60,7 +61,7 @@
 
         <div class="activa">
             <label for="activa">Empresa activa
-                <input type="checkbox" id="activa" name="activa" value="1">
+                <input type="checkbox" id="activa" name="activa" checked>
             </label>
         </div>
 

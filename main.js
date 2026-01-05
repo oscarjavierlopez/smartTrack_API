@@ -1,4 +1,4 @@
-function delete_by_id() {
+function deleteById() {
     let id = document.getElementById('id').value;
 
     fetch(`http://localhost:8000/api/empresas/${id}`, {
@@ -6,12 +6,12 @@ function delete_by_id() {
     })
         .then(response => {
             console.log(response);
-            get_empresas();
+            getEmpresas();
         })
         .catch(err => console.log(err));
 }
 
-function delete_by_cif() {
+function deleteByCif() {
     let cif = document.getElementById('cif').value;
 
     fetch(`http://localhost:8000/api/empresas/cif/${cif}`, {
@@ -19,12 +19,12 @@ function delete_by_cif() {
     })
         .then(response => {
             console.log(response)
-            get_empresas();
+            getEmpresas();
         })
         .catch(err => console.log(err));
 }
 
-function update_by_id() {
+function updateById() {
     let id = document.getElementById('id').value;
 
     let body = {};
@@ -97,12 +97,12 @@ function update_by_id() {
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            get_empresas();
+            getEmpresas();
         })
         .catch(err => console.log(err));
 }
 
-function update_by_cif() {
+function updateByCif() {
     let cif = document.getElementById('cif').value;
 
     let body = {};
@@ -176,12 +176,12 @@ function update_by_cif() {
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            get_empresas();
+            getEmpresas();
         })
         .catch(err => console.log(err));
 }
 
-function get_empresas() {
+function getEmpresas() {
     document.getElementById('cards').innerHTML = '';
 
     fetch('http://localhost:8000/api/empresas')
@@ -209,12 +209,12 @@ function get_empresas() {
         .catch(err => console.log(err));
 }
 
-get_empresas();
+getEmpresas();
 
-document.getElementById('actualizarPorId').addEventListener('click', update_by_id);
-document.getElementById('actualizarPorCif').addEventListener('click', update_by_cif);
-document.getElementById('eliminarPorId').addEventListener('click', delete_by_id);
-document.getElementById('eliminarPorCif').addEventListener('click', delete_by_cif);
+document.getElementById('actualizarPorId').addEventListener('click', updateById);
+document.getElementById('actualizarPorCif').addEventListener('click', updateByCif);
+document.getElementById('eliminarPorId').addEventListener('click', deleteById);
+document.getElementById('eliminarPorCif').addEventListener('click', deleteByCif);
 
 
 

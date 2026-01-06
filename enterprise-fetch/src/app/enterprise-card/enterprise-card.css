@@ -1,0 +1,45 @@
+ .empresa-card {
+     background-color: #ffffff;
+     border-radius: 8px;
+     padding: 16px;
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+ }
+
+ .empresa-nombre {
+     font-size: 1.2rem;
+     font-weight: bold;
+     margin-bottom: 8px;
+     color: #333;
+ }
+
+ .empresa-direccion {
+     font-size: 0.95rem;
+     color: #555;
+     margin-bottom: 4px;
+ }
+
+ .empresa-ciudad {
+     font-size: 0.9rem;
+     color: #777;
+     margin-bottom: 10px;
+ }
+
+ .empresa-descripcion {
+     font-size: 0.9rem;
+     color: #444;
+     margin-bottom: 12px;
+     line-height: 1.4;
+ }
+
+ .empresa-sector {
+     align-self: flex-start;
+     background-color: #e6f0ff;
+     color: #1a4fb3;
+     padding: 4px 10px;
+     border-radius: 12px;
+     font-size: 0.8rem;
+     font-weight: bold;
+ }

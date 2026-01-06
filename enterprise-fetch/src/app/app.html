@@ -1,0 +1,8 @@
+<app-formulario />
+<div class="cards-container">
+  @for (empresa of empresasApiService.empresas; track empresa.id) {
+  <app-enterprise-card [id]="empresa.id" [nombre]="empresa.nombre" [cif]="empresa.cif" [ciudad]="empresa.ciudad"
+    [direccion]="empresa.direccion" [descripcion]="empresa.descripcion" [sector]="empresa.sector" />
+  }
+</div>
+<router-outlet />

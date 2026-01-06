@@ -1,0 +1,62 @@
+<div class="form">
+    <label for="id">Id</label>
+    <input type="text" id="id" [(ngModel)]="id">
+
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" [(ngModel)]="nombre">
+
+    <label for="cif">CIF</label>
+    <input type="text" id="cif"[(ngModel)]="cif">
+
+    <label for="direccion">Dirección</label>
+    <input type="text" id="direccion" [(ngModel)]="direccion">
+
+    <label for="ciudad">Ciudad</label>
+    <input type="text" id="ciudad" [(ngModel)]="ciudad">
+
+    <label for="provincia">Provincia</label>
+    <input type="text" id="provincia" [(ngModel)]="provincia">
+
+    <label for="pais">País</label>
+    <input type="text" id="pais" [(ngModel)]="pais">
+
+    <label for="latitud">Latitud</label>
+    <input type="number" id="latitud" [(ngModel)]="latitud" step="0.0000001" min="-90" max="90">
+
+    <label for="longitud">Longitud</label>
+    <input type="number" id="longitud" [(ngModel)]="longitud" step="0.0000001" min="-180" max="180">
+
+    <label for="descripcion">Descripción</label>
+    <textarea id="descripcion" [(ngModel)]="descripcion" rows="4"></textarea>
+
+    <label for="sector">Sector</label>
+    <input type="text" id="sector" [(ngModel)]="sector">
+
+    <label for="prioridad">Prioridad (0 a 10)</label>
+    <input type="number" id="prioridad" [(ngModel)]="prioridad" min="0" max="10">
+
+    <label for="presencialidad">Presencialidad</label>
+    <select id="presencialidad" [(ngModel)]="presencialidad">
+        <option value="seleccionar">Seleccione una opción</option>
+        <option value="presencial">Presencial</option>
+        <option value="híbrido">Híbrido</option>
+        <option value="remoto">Remoto</option>
+    </select>
+
+    <label for="horario">Horario</label>
+    <input type="text" id="horario" [(ngModel)]="horario">
+
+    <div class="activa">
+        <label for="activa">Empresa activa
+            <input type="checkbox" id="activa" [(ngModel)]="activa">
+        </label>
+    </div>
+</div>
+
+
+<div class="buttons">
+    <button type="button" id="actualizarPorId" (click)="actualizarPorId()">Actualizar por id</button>
+    <button type="button" id="actualizarPorCif" (click)="actualizarPorCif()">Actualizar por cif</button>
+    <button type="button" id="eliminarPorId" (click)="eliminarPorId()">Eliminar por id</button>
+    <button type="button" id="eliminarPorCif" (click)="eliminarPorCif()">Eliminar por cif</button>
+</div>
